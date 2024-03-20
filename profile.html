@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SolWall - Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <span class="brand">SolWall</span>
+            <div class="dropdown">
+                <img id="avatar" src="avatar.png" alt="Avatar" onclick="toggleDropdown()">
+                <div id="dropdown-content" class="dropdown-content">
+                    <a href="#" id="disconnect">Disconnect</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="main-content">
+        <div class="container">
+            <h1>Profile</h1>
+            <p>Your Public Key: <span id="publicKey"></span></p>
+        </div>
+    </main>
+    <script src="profileScript.js"></script>
+</body>
+</html>
