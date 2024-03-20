@@ -23,11 +23,11 @@ function setupProfilePage() {
     if (publicKeyStr) {
         document.getElementById('publicKey').textContent = publicKeyStr;
         getSolBalance(publicKeyStr).then(balance => {
-            document.getElementById('walletBalance').textContent = `Balance: ${balance} SOL`;
+            document.getElementById('walletBalance').textContent = `${balance} SOL`;
         });
     } else {
         document.getElementById('publicKey').textContent = 'Unavailable';
-        document.getElementById('walletBalance').textContent = 'Balance: Unavailable';
+        document.getElementById('walletBalance').textContent = 'Unavailable';
     }
 
     document.getElementById('disconnect').addEventListener('click', async () => {

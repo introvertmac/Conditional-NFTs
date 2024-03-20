@@ -46,8 +46,25 @@ button#connectButton:hover, #getPhantomBtn:hover {
 }
 
 .main-content {
-    padding-top: 80px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vmin; /* Responsive square */
+    height: 50vmin; /* Responsive square */
+    border-radius: 20px; /* Rounded corners */
+    margin: 150px auto 0; /* Adjusted top margin to push down from navbar */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    background-color: #fff; /* Background contrast */
+    padding: 20px; /* Inner spacing */
+    box-sizing: border-box; /* Include padding in width and height */
+    position: relative; /* Ensure it's positioned correctly within the flow */
+    z-index: 10; /* Ensure it's layered above the background but under any overlay/modal */
+}
+
+
+
+.content {
+    text-align: center; /* Centers the text inside .main-content */
 }
 
 #popup {
@@ -182,5 +199,24 @@ button#connectButton:hover, #getPhantomBtn:hover {
         margin: 10px auto; /* Centers the content */
         width: auto; /* Allows the content to adjust based on its length */
         max-width: 100%; /* Prevents content from overflowing its container */
+    }
+}
+
+.footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px 10px;
+    width: 100%;
+    height: 40px; /* Set a fixed height for the footer */
+    position: absolute;
+    bottom: 0;
+}
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+    .main-content {
+        width: 80vmin; /* Increase size for small devices */
+        height: 80vmin;
     }
 }
