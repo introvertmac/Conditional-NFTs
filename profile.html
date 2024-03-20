@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SolWall - Profile</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Ensure you have the Solana web3.js library for functionality -->
+    <script src="https://cdn.jsdelivr.net/npm/@solana/web3.js@latest"></script>
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
             <span class="brand">SolWall</span>
+            <!-- Dropdown for profile interaction -->
             <div class="dropdown">
                 <img id="avatar" src="avatar.png" alt="Avatar" onclick="toggleDropdown()">
                 <div id="dropdown-content" class="dropdown-content">
@@ -21,7 +24,11 @@
     <main class="main-content">
         <div class="container">
             <h1>Profile</h1>
-            <p>Your Wallet address: <span id="publicKey"></span></p>
+            <div class="wallet-info">
+                <p>Your Wallet Address:</p>
+                <p id="publicKey" class="public-key"></p>
+                <p id="walletBalance" class="wallet-balance"></p>
+            </div>
         </div>
     </main>
     <script src="profileScript.js"></script>
