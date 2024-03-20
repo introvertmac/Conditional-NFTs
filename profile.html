@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SolWall - Profile</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Ensure you have the Solana web3.js library for functionality -->
     <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
 </head>
 <body>
@@ -21,12 +20,12 @@
         </div>
     </nav>
     <main class="main-content">
-        <div class="container">
+        <div class="profile-container">
             <h1>Profile</h1>
             <div class="wallet-info">
-                <p>Your Wallet Address:</p>
+                <p><strong>Your Wallet Address:</strong></p>
                 <p id="publicKey" class="public-key"></p>
-                <p id="walletBalance" class="wallet-balance"></p>
+                <p><strong>Balance:</strong> <span id="walletBalance" class="wallet-balance"></span></p>
             </div>
         </div>
     </main>

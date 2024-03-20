@@ -156,13 +156,12 @@ button#connectButton:hover, #getPhantomBtn:hover {
 /* Existing styles for the wallet-info and its children */
 
 .wallet-info {
-    background-color: #f2f2f2;
+    background-color: #e7eff6; /* Lighter shade for the wallet info for contrast */
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 5px;
     margin-top: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: left; /* Ensures text alignment is consistent */
 }
+
 
 .public-key, .wallet-balance {
     background-color: #ffffff;
