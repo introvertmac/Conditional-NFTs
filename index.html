@@ -3,20 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phantom Wallet Detection and Connection</title>
+    <title>SolWall - Wallet Profiler</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app">
-    </div>
+    <nav class="navbar">
+        <div class="container">
+            <span class="brand">SolWall</span>
+            <button id="connectButton">Connect Wallet</button>
+        </div>
+    </nav>
+    <!--- <main class="main-content">
+        <div class="container">
+            <h1>Welcome to SolWall</h1>
+            <p>Your gateway to the Solana blockchain.</p>
+        </div>
+    </main> --->
     <div id="popup" class="hidden">
-        <div id="popup-content">
-            <button id="closeBtn">&#215;</button>
-            <div id="message1" class="message">Phantom Wallet Not Detected.</div>
-            <div id="message2" class="message">
-                Get it here: <a href="https://phantom.app/" target="_blank">Phantom Wallet</a>
+        <div class="popup-content">
+            <span class="close-btn" onclick="togglePopup()">&#215;</span>
+            <div class="popup-body">
+                <h2>Connect to Phantom Wallet</h2>
+                <p id="walletConnectText">Detecting wallet...</p>
+                <button id="phantomLink" class="hidden">Get Phantom Wallet</button>
             </div>
-            <button id="connectBtn">Connect Wallet</button>
         </div>
     </div>
     <script src="script.js"></script>
