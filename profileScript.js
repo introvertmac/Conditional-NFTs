@@ -1,7 +1,7 @@
 async function getSolBalance(publicKeyStr) {
     try {
         // Updated to use the provided RPC endpoint with an API key
-        const rpcUrl = "https://mainnet.helius-rpc.com/?api-key=10b26a1d-9d27-492a-abd2-db5613728fe8";
+        const rpcUrl = "https://mainnet.helius-rpc.com/?api-key=__API_KEY__";
         const connection = new solanaWeb3.Connection(rpcUrl, 'confirmed');
         const publicKey = new solanaWeb3.PublicKey(publicKeyStr);
         const balanceInLamports = await connection.getBalance(publicKey);

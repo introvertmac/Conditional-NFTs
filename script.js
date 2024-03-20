@@ -11,7 +11,6 @@ function detectPhantomWallet() {
 
     if (window.phantom?.solana?.isPhantom) {
         // Phantom is detected, prepare to connect
-        walletText.textContent = "Click below to connect to your Phantom Wallet.";
         phantomLink.textContent = "Connect Phantom Wallet";
         phantomLink.onclick = async function() {
             try {
