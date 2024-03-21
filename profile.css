@@ -42,6 +42,12 @@ body, html {
     cursor: pointer;
 }
 
+/* Add this to your CSS */
+.dropdown-content.show {
+    display: block;
+}
+
+
 .dropdown-content {
     display: none;
     position: absolute;
