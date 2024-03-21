@@ -31,6 +31,13 @@ body, html {
     color: #333; /* For a bit of contrast */
 }
 
+#avatar {
+    width: 50px; /* Adjust size as needed */
+    border-radius: 50%; /* Circular avatar */
+    cursor: pointer;
+}
+
+
 .dropdown {
     position: relative;
     display: inline-block;
