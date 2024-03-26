@@ -83,6 +83,15 @@ function setupProfilePage() {
     }
 }
 
+document.getElementById('disconnect').addEventListener('click', async () => {
+        try {
+            await window.solana.disconnect();
+            window.location.href = 'index.html'; // Redirect to the main page after disconnecting
+        } catch (error) {
+            console.error('Error disconnecting wallet:', error);
+        }
+    });
+}
 
 function toggleDropdown() {
     const dropdownContent = document.getElementById("dropdown-content");
