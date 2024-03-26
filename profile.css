@@ -157,6 +157,16 @@ body, html {
         max-width: 100%;
         height: auto;
     }
+
+    /* Adjustments for wallet balance */
+    .wallet-info {
+        flex-direction: column;
+    }
+
+    .wallet-balance {
+        text-align: center;
+        margin-top: 10px;
+    }
 }
 
 /* New CSS Styles for NFT Gallery */
