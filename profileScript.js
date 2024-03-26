@@ -28,9 +28,9 @@ async function getAssetsByOwner(publicKeyStr) {
                 id: 'getAssetsByOwner',
                 method: 'getAssetsByOwner',
                 params: {
-                    ownerAddress: publicKeyStr, // Use dynamic publicKeyStr instead of a hardcoded value
+                    ownerAddress: publicKeyStr, // Use the dynamic public key
                     page: 1,
-                    limit: 10, // Adjust the limit as per requirement
+                    limit: 10, // Customize as needed
                 }
             })
         });
@@ -38,7 +38,7 @@ async function getAssetsByOwner(publicKeyStr) {
         if (data && data.result && data.result.items) {
             displayNFTs(data.result.items);
         } else {
-            displayNFTs([]); // Handle case where no items are returned
+            displayNFTs([]); // Handle case with no items
         }
     } catch (error) {
         console.error('Error fetching assets by owner:', error);
@@ -47,25 +47,25 @@ async function getAssetsByOwner(publicKeyStr) {
 }
 
 function displayNFTs(nfts) {
-    const nftContainer = document.getElementById('nftContainer');
-    nftContainer.innerHTML = ''; // Clear the container
+    const gallery = document.getElementById('nftContainer') || document.querySelector('ul'); // Adapt for potential different container types
+    gallery.innerHTML = ''; // Clear the container before displaying new NFTs
 
     if (!nfts.length) {
-        nftContainer.innerHTML = '<p>No NFTs found.</p>';
+        gallery.innerHTML = '<li>No NFTs found.</li>';
         return;
     }
 
     nfts.forEach(nft => {
-        // Ensure the use of correct variables for image and name, adjust accordingly
-        const div = document.createElement('div');
-        div.className = 'nft';
-        const imageUrl = nft.content.links.image;// Adjust the path to a placeholder image as necessary
+        // Adapt to the response structure used in the given code snippet
+        const imageUrl = nft.content.links.image; // Assume this structure based on provided code
         const name = nft.content.metadata.name || 'Unnamed NFT';
-        div.innerHTML = `
-            <img src="${imageUrl}" alt="${name}" style="width: 100%;"/>
+        const listItem = document.createElement('li');
+        listItem.className = 'nft-item'; // Updated className for consistency
+        listItem.innerHTML = `
+            <img src="${imageUrl}" alt="${name}" style="width: 100px; height: auto;"/>
             <p>${name}</p>
         `;
-        nftContainer.appendChild(div);
+        gallery.appendChild(listItem);
     });
 }
 
