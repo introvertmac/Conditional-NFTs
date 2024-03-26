@@ -130,7 +130,6 @@ body, html {
     font-size: 14px;
 }
 
-
 /* Media query for responsive adjustments */
 @media screen and (max-width: 768px) {
     .container {
@@ -159,6 +158,25 @@ body, html {
         height: auto;
     }
 
+    /* Adjustments for navbar */
+    .navbar {
+        height: auto;
+        padding: 10px;
+    }
+
+    .brand {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .container {
+        justify-content: space-between;
+    }
+
+    #avatar {
+        order: 1;
+    }
+
     /* Adjustments for wallet balance */
     .wallet-info {
         flex-direction: column;
@@ -170,7 +188,6 @@ body, html {
         margin-top: 10px;
     }
 }
-
 
 /* New CSS Styles for NFT Gallery */
 .nft-gallery {
