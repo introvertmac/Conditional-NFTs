@@ -76,6 +76,7 @@ function displayNFTs(nfts) {
         image.src = nft.content.links.image;
         image.alt = nft.content.metadata.name || 'Unnamed NFT';
         if (giftIds.includes(nft.id)) {
+            image.classList.add('clickable');
             image.addEventListener('click', function() {
                 window.open('https://cal.com/manishbhattacharya/drip-haus?date=2024-03-27&month=2024-03', '_blank');
             });
@@ -90,6 +91,7 @@ function displayNFTs(nfts) {
         console.log(giftIds);
     });
 }
+
 
 // Setup the profile page
 function setupProfilePage() {

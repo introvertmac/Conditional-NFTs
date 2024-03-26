@@ -32,6 +32,18 @@ body, html {
     color: #333;
 }
 
+/* Add a class to the NFT image to make it clickable */
+.nft-container .nft img.clickable {
+    cursor: pointer;
+    border: 2px solid #007bff;
+}
+
+/* Add a hover effect to the NFT image */
+.nft-container .nft img.clickable:hover {
+    border-color: #0056b3;
+}
+
+
 #avatar {
     width: 50px;
     border-radius: 50%;
