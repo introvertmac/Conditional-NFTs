@@ -59,25 +59,24 @@ function displayNFTs(nfts) {
     const gallery = document.getElementById('nftContainer') || document.querySelector('ul');
     gallery.innerHTML = '';
     if (!nfts.length) {
-        const noNFTMessage = document.createElement('li');
+        const noNFTMessage = document.createElement('div');
         noNFTMessage.textContent = 'No NFTs found.';
         gallery.appendChild(noNFTMessage);
         return;
     }
 
     nfts.forEach(nft => {
-        const listItem = document.createElement('li');
-        listItem.className = 'nft-item';
+        const nftItem = document.createElement('div');
+        nftItem.className = 'nft';
         const image = document.createElement('img');
         image.src = nft.content.links.image;
         image.alt = nft.content.metadata.name || 'Unnamed NFT';
-        image.style.width = "100px";
-        image.style.height = "auto";
-        const paragraph = document.createElement('p');
-        paragraph.textContent = nft.content.metadata.name || 'Unnamed NFT';
-        listItem.appendChild(image);
-        listItem.appendChild(paragraph);
-        gallery.appendChild(listItem);
+        const nameElement = document.createElement('p');
+        nameElement.className = 'nft-name';
+        nameElement.textContent = nft.content.metadata.name || 'Unnamed NFT';
+        nftItem.appendChild(image);
+        nftItem.appendChild(nameElement);
+        gallery.appendChild(nftItem);
     });
 }
 
@@ -133,6 +132,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     toggleDropdown();
 });
-
-
-
