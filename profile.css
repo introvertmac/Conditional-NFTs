@@ -64,7 +64,6 @@ body, html {
 
 .dropdown:hover .dropdown-content {display: block;}
 
-
 /* Main content styling */
 .main-content {
     display: flex;
@@ -148,6 +147,16 @@ body, html {
     .profile-container {
         padding: 10px;
     }
+
+    /* Adjustments for NFT images */
+    .nft-container {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .nft img {
+        max-width: 100%;
+        height: auto;
+    }
 }
 
 /* New CSS Styles for NFT Gallery */
@@ -189,38 +198,4 @@ body, html {
     font-weight: bold;
     font-size: 16px;
     margin-bottom: 5px;
-}
-
-/* Media query for responsive adjustments */
-@media screen and (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        height: auto;
-        padding: 10px;
-    }
-
-    .main-content {
-        padding-top: 60px; /* Reduced padding-top for more space */
-        padding-bottom: 20px; /* Reduced padding-bottom for consistency */
-        padding-left: 5px; /* Reduced side paddings */
-        padding-right: 5px;
-    }
-
-    .profile-container {
-        padding: 15px; /* Reduced padding for more content space */
-    }
-
-    .wallet-info, .nft-gallery {
-        flex-direction: column; /* Stack elements vertically */
-        align-items: center; /* Center-align for a neater appearance */
-    }
-
-    .nft-container {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust NFT gallery grid for smaller screens */
-    }
-
-    .wallet-info p, .wallet-balance {
-        text-align: center; /* Center-align text for better readability */
-        margin-top: 10px; /* Add some space between elements */
-    }
 }
