@@ -5,7 +5,7 @@ async function getSolBalance(publicKeyStr) {
         const publicKey = new solanaWeb3.PublicKey(publicKeyStr);
         const balanceInLamports = await connection.getBalance(publicKey);
         const balanceInSOL = balanceInLamports / solanaWeb3.LAMPORTS_PER_SOL;
-        return balanceInSOL.toFixed(2); // Format the balance to two decimal places
+        return balanceInSOL.toFixed(2);
     } catch (error) {
         console.error('Error getting SOL balance:', error);
         return 'Error fetching balance';
@@ -17,15 +17,12 @@ function getPublicKeyFromURL() {
     return urlParams.get('publicKey');
 }
 
-
 async function getAssetsByOwner(publicKeyStr) {
     const url = `https://mainnet.helius-rpc.com/?api-key=10b26a1d-9d27-492a-abd2-db5613728fe8`;
     try {
         const response = await fetch(url, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 jsonrpc: '2.0',
                 id: 'getAssetsByOwner',
@@ -33,12 +30,15 @@ async function getAssetsByOwner(publicKeyStr) {
                 params: {
                     ownerAddress: publicKeyStr,
                     page: 1,
-                    limit: 100 // Adjust as needed
+                    limit: 100
                 }
             })
         });
         const data = await response.json();
-        return data.result.items; // This may need to be adjusted based on the actual response structure
+        if (data && data.result && data.result.items) {
+            return data.result.items;
+        }
+        return [];
     } catch (error) {
         console.error('Error fetching assets by owner:', error);
         return [];
@@ -48,13 +48,21 @@ async function getAssetsByOwner(publicKeyStr) {
 function displayNFTs(nfts) {
     const nftContainer = document.getElementById('nftContainer');
     nftContainer.innerHTML = ''; // Clear the container
+
+    if (!nfts.length) {
+        nftContainer.innerHTML = '<p>No NFTs found.</p>';
+        return;
+    }
+
     nfts.forEach(nft => {
+        // Ensure the use of correct variables for image and name, adjust accordingly
         const div = document.createElement('div');
         div.className = 'nft';
-        // Assuming the NFT data includes a field for the image URL and name
+        const imageUrl = nft.metadata ? nft.metadata.image : 'placeholder.jpg'; // Adjust the path to a placeholder image as necessary
+        const name = nft.metadata ? nft.metadata.name : 'Unknown';
         div.innerHTML = `
-            <img src="${nft.image}" alt="${nft.name}" style="width: 100%;"/>
-            <p>${nft.name}</p>
+            <img src="${imageUrl}" alt="${name}" style="width: 100%;"/>
+            <p>${name}</p>
         `;
         nftContainer.appendChild(div);
     });
@@ -75,10 +83,11 @@ function setupProfilePage() {
         document.getElementById('walletBalance').textContent = 'Unavailable';
     }
 
+    // Reattach disconnect event listener to ensure functionality
     document.getElementById('disconnect').addEventListener('click', async () => {
         try {
             await window.solana.disconnect();
-            window.location.href = 'index.html'; // Redirect to the main page after disconnecting
+            window.location.href = 'index.html';
         } catch (error) {
             console.error('Error disconnecting wallet:', error);
         }
@@ -90,7 +99,6 @@ function toggleDropdown() {
     dropdownContent.classList.toggle("show");
 }
 
-// Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
     if (!event.target.matches('#avatar')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
