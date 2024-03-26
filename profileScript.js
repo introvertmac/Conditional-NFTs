@@ -12,6 +12,12 @@ async function getSolBalance(publicKeyStr) {
     }
 }
 
+function getPublicKeyFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('publicKey');
+}
+
+
 async function getAssetsByOwner(publicKeyStr) {
     const url = `https://mainnet.helius-rpc.com/?api-key=10b26a1d-9d27-492a-abd2-db5613728fe8`;
     try {
