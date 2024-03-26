@@ -2,7 +2,7 @@
 const config = {
     rpcUrl: "https://mainnet.helius-rpc.com/?api-key=10b26a1d-9d27-492a-abd2-db5613728fe8",
     connectionOptions: 'confirmed',
-    defaultLimit: 51
+    defaultLimit: 60
 };
 
 // Fetch Solana balance

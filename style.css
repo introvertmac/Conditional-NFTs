@@ -1,6 +1,14 @@
+/* Reset some basic elements */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
 
+/* Navbar styles */
 .navbar {
-    background-color: #ffffff;
+    background-color: #ffffff; /* Maintains original navbar background */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: fixed;
     width: 100%;
@@ -15,50 +23,37 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
+    height: auto; /* Adjusted for better responsiveness */
 }
 
 .brand {
     font-weight: bold;
     font-size: 24px;
+    color: #007bff; /* Brand color for consistency */
 }
 
 button#connectButton, #getPhantomBtn {
     padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button#connectButton:hover, #getPhantomBtn:hover {
-    background-color: #0056b3;
-}
-
-button#connectButton, #getPhantomBtn {
-    padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #007bff; /* Brand primary color */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
-
 }
 
 button#connectButton:hover, #getPhantomBtn:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Darker shade for hover effect */
 }
 
+/* Main content styling */
 .main-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 60px); /* Subtract the navbar height */
+    min-height: calc(100vh - 60px); /* Adjusted for consistent navigation */
     padding: 20px;
     box-sizing: border-box;
     position: relative;
@@ -82,6 +77,7 @@ button#connectButton:hover, #getPhantomBtn:hover {
     margin-bottom: 20px;
 }
 
+/* Popup styles */
 #popup {
     position: fixed;
     top: 0;
@@ -129,7 +125,7 @@ button#connectButton:hover, #getPhantomBtn:hover {
     font-size: 16px;
     font-weight: bold;
     color: white;
-    background: linear-gradient(135deg, #0072ff, #00c6ff);
+    background: linear-gradient(135deg, #0072ff, #00c6ff); /* Consistent gradient for branding */
     border: none;
     border-radius: 30px;
     cursor: pointer;
@@ -142,27 +138,28 @@ button#connectButton:hover, #getPhantomBtn:hover {
 }
 
 .popup-content #phantomLink:hover, .popup-content #phantomLink:focus {
-    background: linear-gradient(135deg, #0062e6, #00b6ff);
+    background: linear-gradient(135deg, #0062e6, #00b6ff); /* Hover effect for gradient */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
 }
 
 .popup-content #phantomLink:active {
-    background: linear-gradient(135deg, #005ad1, #009ecc);
+    background: linear-gradient(135deg, #005ad1, #009ecc); /* Active state gradient */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transform: translateY(0);
 }
 
+/* Footer styles */
 .footer {
-    background-color: #000;
-    color: #fff;
+    background-color: #333; /* Updated to match brand primary color */
+    color: #fff; /* Ensures text is visible against the footer background */
     text-align: center;
     padding: 20px 10px;
-    width: 100%;
-    position: fixed; /* Changed from absolute to fixed */
+    position: fixed;
     bottom: 0;
-    left: 0; /* Ensure it aligns to the left edge */
-    box-sizing: border-box; /* Ensure padding is included in the width calculation */
+    width: 100%;
+    left: 0; /* Ensures footer covers the entire bottom */
+    box-sizing: border-box;
 }
 
 .footer p {
@@ -170,22 +167,37 @@ button#connectButton:hover, #getPhantomBtn:hover {
     font-size: 14px;
 }
 
+/* Media query for responsive adjustments */
 @media screen and (max-width: 768px) {
     .container {
         flex-direction: column;
-        height: auto;
+        padding: 10px;
     }
 
-    .navbar {
-        height: auto;
+    .navbar, .main-content {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .brand, button#connectButton, #getPhantomBtn {
+        margin-top: 10px; /* Adjust spacing for stacked elements */
     }
 
     .main-content {
-        min-height: calc(100vh - 60px - 40px); /* Subtract the navbar and footer heights */
+        min-height: auto; /* Allows content to dictate height */
+        justify-content: flex-start; /* Aligns content to start for better spacing */
     }
 
-    button#connectButton, #getPhantomBtn {
-        margin-top: 10px;
+    .project-name {
+        font-size: 40px; /* Reduce font size for smaller screens */
+    }
+
+    .subheading {
+        font-size: 18px; /* Adjust subheading size for readability */
+    }
+
+    .popup-content {
+        width: 80%; /* Adjust popup width for better mobile fit */
     }
 }
 
