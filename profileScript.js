@@ -1,6 +1,5 @@
 async function getSolBalance(publicKeyStr) {
     try {
-        // Updated to use the provided RPC endpoint with an API key
         const rpcUrl = "https://mainnet.helius-rpc.com/?api-key=10b26a1d-9d27-492a-abd2-db5613728fe8";
         const connection = new solanaWeb3.Connection(rpcUrl, 'confirmed');
         const publicKey = new solanaWeb3.PublicKey(publicKeyStr);
@@ -13,9 +12,46 @@ async function getSolBalance(publicKeyStr) {
     }
 }
 
-function getPublicKeyFromURL() {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('publicKey');
+async function getAssetsByOwner(publicKeyStr) {
+    const url = `https://mainnet.helius-rpc.com/?api-key=10b26a1d-9d27-492a-abd2-db5613728fe8`;
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                jsonrpc: '2.0',
+                id: 'getAssetsByOwner',
+                method: 'getAssetsByOwner',
+                params: {
+                    ownerAddress: publicKeyStr,
+                    page: 1,
+                    limit: 100 // Adjust as needed
+                }
+            })
+        });
+        const data = await response.json();
+        return data.result.items; // This may need to be adjusted based on the actual response structure
+    } catch (error) {
+        console.error('Error fetching assets by owner:', error);
+        return [];
+    }
+}
+
+function displayNFTs(nfts) {
+    const nftContainer = document.getElementById('nftContainer');
+    nftContainer.innerHTML = ''; // Clear the container
+    nfts.forEach(nft => {
+        const div = document.createElement('div');
+        div.className = 'nft';
+        // Assuming the NFT data includes a field for the image URL and name
+        div.innerHTML = `
+            <img src="${nft.image}" alt="${nft.name}" style="width: 100%;"/>
+            <p>${nft.name}</p>
+        `;
+        nftContainer.appendChild(div);
+    });
 }
 
 function setupProfilePage() {
@@ -24,6 +60,9 @@ function setupProfilePage() {
         document.getElementById('publicKey').textContent = publicKeyStr;
         getSolBalance(publicKeyStr).then(balance => {
             document.getElementById('walletBalance').textContent = `${balance} SOL`;
+        });
+        getAssetsByOwner(publicKeyStr).then(nfts => {
+            displayNFTs(nfts);
         });
     } else {
         document.getElementById('publicKey').textContent = 'Unavailable';
