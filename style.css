@@ -1,4 +1,3 @@
-
 .navbar {
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -21,6 +20,7 @@
 .brand {
     font-weight: bold;
     font-size: 24px;
+    color: #333; /* Brand color */
 }
 
 button#connectButton, #getPhantomBtn {
@@ -71,7 +71,7 @@ button#connectButton:hover, #getPhantomBtn:hover {
 
 .project-name {
     font-size: 80px;
-    color: #333;
+    color: #333; /* Brand color */
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -124,7 +124,15 @@ button#connectButton:hover, #getPhantomBtn:hover {
     margin: 20px 0;
 }
 
-.popup-content #phantomLink {
+.phantom-logo {
+    height: 24px; /* Adjust the height as needed */
+    margin-right: 8px; /* Add some spacing between the logo and text */
+    vertical-align: middle; /* Align the logo vertically with the text */
+}
+
+#phantomLink {
+    display: inline-flex;
+    align-items: center;
     padding: 12px 24px;
     font-size: 16px;
     font-weight: bold;
@@ -137,24 +145,24 @@ button#connectButton:hover, #getPhantomBtn:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     text-decoration: none;
-    display: inline-block;
     margin-top: 20px;
 }
 
-.popup-content #phantomLink:hover, .popup-content #phantomLink:focus {
+#phantomLink:hover,
+#phantomLink:focus {
     background: linear-gradient(135deg, #0062e6, #00b6ff);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
 }
 
-.popup-content #phantomLink:active {
+#phantomLink:active {
     background: linear-gradient(135deg, #005ad1, #009ecc);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transform: translateY(0);
 }
 
 .footer {
-    background-color: #000;
+    background-color: #333;
     color: #fff;
     text-align: center;
     padding: 20px 10px;

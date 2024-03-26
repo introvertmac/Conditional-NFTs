@@ -10,8 +10,9 @@ function detectPhantomWallet() {
     const phantomLink = document.getElementById('phantomLink');
 
     if (window.phantom?.solana?.isPhantom) {
-        // Phantom is detected, prepare to connect
-        phantomLink.textContent = "Connect Phantom Wallet";
+        // Phantom is detected, show the "Connect Wallet" button
+        phantomLink.classList.remove('hidden');
+        phantomLink.href = "#"; // Use "#" as a placeholder for now
         phantomLink.onclick = async function() {
             try {
                 // Attempt to connect to the Phantom wallet
@@ -30,12 +31,13 @@ function detectPhantomWallet() {
             }
         };
     } else {
-        // Phantom is not detected, offer link to download
+        // Phantom is not detected, show the "Get Phantom Wallet" link
         walletText.innerHTML = "Phantom Wallet not detected.";
         phantomLink.textContent = "Get Phantom Wallet";
         phantomLink.classList.remove('hidden');
         phantomLink.href = "https://phantom.app/";
         phantomLink.target = "_blank";
+        phantomLink.onclick = null; // Reset the onclick event handler
     }
 }
 
