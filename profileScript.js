@@ -76,24 +76,13 @@ function setupProfilePage() {
         getSolBalance(publicKeyStr).then(balance => {
             document.getElementById('walletBalance').textContent = `${balance} SOL`;
         });
-        getAssetsByOwner(publicKeyStr).then(nfts => {
-            displayNFTs(nfts);
-        });
+        getAssetsByOwner(publicKeyStr); // Removed .then(...) as displayNFTs is already called inside getAssetsByOwner
     } else {
         document.getElementById('publicKey').textContent = 'Unavailable';
         document.getElementById('walletBalance').textContent = 'Unavailable';
     }
-
-    // Reattach disconnect event listener to ensure functionality
-    document.getElementById('disconnect').addEventListener('click', async () => {
-        try {
-            await window.solana.disconnect();
-            window.location.href = 'index.html';
-        } catch (error) {
-            console.error('Error disconnecting wallet:', error);
-        }
-    });
 }
+
 
 function toggleDropdown() {
     const dropdownContent = document.getElementById("dropdown-content");
