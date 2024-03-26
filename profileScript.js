@@ -28,20 +28,21 @@ async function getAssetsByOwner(publicKeyStr) {
                 id: 'getAssetsByOwner',
                 method: 'getAssetsByOwner',
                 params: {
-                    ownerAddress: publicKeyStr,
+                    ownerAddress: publicKeyStr, // Use dynamic publicKeyStr instead of a hardcoded value
                     page: 1,
-                    limit: 100
+                    limit: 10, // Adjust the limit as per requirement
                 }
             })
         });
         const data = await response.json();
         if (data && data.result && data.result.items) {
-            return data.result.items;
+            displayNFTs(data.result.items);
+        } else {
+            displayNFTs([]); // Handle case where no items are returned
         }
-        return [];
     } catch (error) {
         console.error('Error fetching assets by owner:', error);
-        return [];
+        displayNFTs([]); // Ensure consistent error handling
     }
 }
 
@@ -58,8 +59,8 @@ function displayNFTs(nfts) {
         // Ensure the use of correct variables for image and name, adjust accordingly
         const div = document.createElement('div');
         div.className = 'nft';
-        const imageUrl = nft.metadata ? nft.metadata.image : 'placeholder.jpg'; // Adjust the path to a placeholder image as necessary
-        const name = nft.metadata ? nft.metadata.name : 'Unknown';
+        const imageUrl = nft.content.links.image;// Adjust the path to a placeholder image as necessary
+        const name = nft.content.metadata.name || 'Unnamed NFT';
         div.innerHTML = `
             <img src="${imageUrl}" alt="${name}" style="width: 100%;"/>
             <p>${name}</p>
