@@ -55,7 +55,6 @@ async function getAssetsByOwner(publicKeyStr) {
 }
 
 // Display NFTs in the UI
-
 let nftIds = [];
 const giftIds = ['J4czUdcDmXqNQY1eUUZ72todjFneUYEFxPbHNyTpyAcE'];
 
@@ -78,7 +77,7 @@ function displayNFTs(nfts) {
         image.alt = nft.content.metadata.name || 'Unnamed NFT';
         if (giftIds.includes(nft.id)) {
             image.addEventListener('click', function() {
-                window.open = 'https://cal.com/manishbhattacharya/drip-haus?date=2024-03-27&month=2024-03';
+                window.open('https://cal.com/manishbhattacharya/drip-haus?date=2024-03-27&month=2024-03', '_blank');
             });
         }
         const nameElement = document.createElement('p');
