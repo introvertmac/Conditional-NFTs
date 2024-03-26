@@ -56,7 +56,7 @@ async function getAssetsByOwner(publicKeyStr) {
 
 // Display NFTs in the UI
 let nftIds = [];
-const giftIds = ['J4czUdcDmXqNQY1eUUZ72todjFneUYEFxPbHNyTpyAcE'];
+const giftIds = ['J4czUdcDmXqNQY1eUUZ72todjFneUYEFxPbHNyTpyAcE', 'HejvsdxpEUwxfnK1U6LFwuXhKtZoA92bx9wGAPJLdJE5'];
 
 function displayNFTs(nfts) {
     const gallery = document.getElementById('nftContainer') || document.querySelector('ul');
