@@ -136,8 +136,8 @@ button#connectButton:hover, #getPhantomBtn:hover {
     padding: 12px 24px;
     font-size: 16px;
     font-weight: bold;
-    color: white;
-    background: linear-gradient(135deg, #0072ff, #00c6ff);
+    color: #fff;  /* white color for text */
+    background: linear-gradient(135deg, #ab47bc, #8e288c); /* gradient for background color */
     border: none;
     border-radius: 30px;
     cursor: pointer;
@@ -150,16 +150,17 @@ button#connectButton:hover, #getPhantomBtn:hover {
 
 #phantomLink:hover,
 #phantomLink:focus {
-    background: linear-gradient(135deg, #0062e6, #00b6ff);
+    background: linear-gradient(135deg, #9b30ff, #6e13c2); /* adjust the hover color */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
 }
 
 #phantomLink:active {
-    background: linear-gradient(135deg, #005ad1, #009ecc);
+    background: linear-gradient(135deg, #8728f5, #5a119a); /* adjust the pressed color */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transform: translateY(0);
 }
+
 
 .footer {
     background-color: #333;
