@@ -72,6 +72,14 @@ const giftIds = ['J4czUdcDmXqNQY1eUUZ72todjFneUYEFxPbHNyTpyAcE', 'HejvsdxpEUwxfn
 function displayNFTs(nfts) {
     const gallery = document.getElementById('nftContainer') || document.querySelector('ul');
     gallery.innerHTML = '';
+    const loader = document.getElementById('loader');
+    
+    if (loader) {
+        loader.style.display = 'none';
+    }
+
+
+
     if (!nfts.length) {
         const noNFTMessage = document.createElement('div');
         noNFTMessage.textContent = 'No NFTs found.';
@@ -112,6 +120,13 @@ function setupProfilePage() {
         getSolBalance(publicKeyStr).then(balance => {
             document.getElementById('walletBalance').textContent = `${balance} SOL`;
         });
+
+        // Show the loader
+        const loader = document.getElementById('loader');
+        if (loader) {
+            loader.style.display = 'block';
+        }
+
         getAssetsByOwner(publicKeyStr);
     } else {
         document.getElementById('publicKey').textContent = 'Unavailable';
