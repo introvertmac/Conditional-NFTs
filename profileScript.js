@@ -97,7 +97,7 @@ function displayNFTs(nfts) {
         if (giftIds.includes(nft.id)) {
             image.classList.add('clickable');
             image.addEventListener('click', function() {
-                window.open('https://cal.com/manishbhattacharya/drip-haus?date=2024-03-27&month=2024-03', '_blank');
+                window.open('https://web3-vshh-nyyn.onrender.com/ihz-ynhu-gbp/lobby', '_blank');
             });
         }
         const nameElement = document.createElement('p');
