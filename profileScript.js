@@ -104,7 +104,8 @@ function displayNFTs(nfts) {
         if (couponIds.includes(nft.id)) {
             image.classList.add('clickable');
             image.addEventListener('click', function() {
-                window.open('coupon.html', '_blank'); // Correctly use window.open as a function
+                console.log('Coupon NFT clicked!');
+                window.open('coupon.html', '_blank');
             });
         }
 
