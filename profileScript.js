@@ -74,12 +74,10 @@ function displayNFTs(nfts) {
     const gallery = document.getElementById('nftContainer') || document.querySelector('ul');
     gallery.innerHTML = '';
     const loader = document.getElementById('loader');
-    
+
     if (loader) {
         loader.style.display = 'none';
     }
-
-
 
     if (!nfts.length) {
         const noNFTMessage = document.createElement('div');
@@ -95,27 +93,31 @@ function displayNFTs(nfts) {
         const image = document.createElement('img');
         image.src = nft.content.links.image;
         image.alt = nft.content.metadata.name || 'Unnamed NFT';
+
         if (giftIds.includes(nft.id)) {
             image.classList.add('clickable');
             image.addEventListener('click', function() {
                 window.open('https://cal.com/manishbhattacharya/drip-haus', '_blank');
             });
         }
+
         if (couponIds.includes(nft.id)) {
             image.classList.add('clickable');
             image.addEventListener('click', function() {
-                window.open('/coupon.html', '_blank');
+                window.open = 'coupon.html'; // Open coupon.html relative to the current page's URL
             });
         }
+
         const nameElement = document.createElement('p');
         nameElement.className = 'nft-name';
         nameElement.textContent = nft.content.metadata.name || 'Unnamed NFT';
         nftItem.appendChild(image);
         nftItem.appendChild(nameElement);
         gallery.appendChild(nftItem);
-        console.log(nftIds);
-        console.log(giftIds);
     });
+
+    console.log(nftIds);
+    console.log(giftIds);
 }
 
 
