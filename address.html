@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Address</title>
+    <style>
+        /* Reset some basic elements */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .brand {
+            font-weight: bold;
+            font-size: 24px;
+            color: #333;
+        }
+
+        /* Form styles */
+        .form-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .form-container h2 {
+            margin-top: 0;
+        }
+
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="tel"] {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+
+        #addressOutput {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <span class="brand">Hauswall</span>
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <h2>Get physical frame of your NFT:</h2>
+        <form id="addressForm">
+            <input type="text" id="firstNameInput" placeholder="First Name" required>
+            <input type="text" id="lastNameInput" placeholder="Last Name" required>
+            <input type="tel" id="contactInput" placeholder="Contact Number" required>
+            <input type="text" id="addressInput" placeholder="Address" required>
+            <input type="text" id="pincodeInput" placeholder="Pincode" required>
+            <input type="text" id="stateInput" placeholder="State" required>
+            <input type="text" id="countryInput" placeholder="Country" required>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="addressOutput"></div>
+    </div>
+
+    <script>
+        const addressForm = document.getElementById('addressForm');
+        const firstNameInput = document.getElementById('firstNameInput');
+        const lastNameInput = document.getElementById('lastNameInput');
+        const contactInput = document.getElementById('contactInput');
+        const addressInput = document.getElementById('addressInput');
+        const pincodeInput = document.getElementById('pincodeInput');
+        const stateInput = document.getElementById('stateInput');
+        const countryInput = document.getElementById('countryInput');
+        const addressOutput = document.getElementById('addressOutput');
+
+        addressForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent form submission and page refresh
+
+            const firstName = firstNameInput.value.trim();
+            const lastName = lastNameInput.value.trim();
+            const contact = contactInput.value.trim();
+            const address = addressInput.value.trim();
+            const pincode = pincodeInput.value.trim();
+            const state = stateInput.value.trim();
+            const country = countryInput.value.trim();
+
+            if (firstName && lastName && contact && address && pincode && state && country) {
+                const addressDetails = `
+                    First Name: ${firstName}
+                    Last Name: ${lastName}
+                    Contact: ${contact}
+                    Address: ${address}
+                    Pincode: ${pincode}
+                    State: ${state}
+                    Country: ${country}
+                `;
+                addressOutput.textContent = addressDetails;
+            } else {
+                addressOutput.textContent = 'Please fill in all the fields.';
+            }
+
+            // Clear the input fields
+            firstNameInput.value = '';
+            lastNameInput.value = '';
+            contactInput.value = '';
+            addressInput.value = '';
+            pincodeInput.value = '';
+            stateInput.value = '';
+            countryInput.value = '';
+        });
+    </script>
+</body>
+</html>

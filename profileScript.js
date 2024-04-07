@@ -68,7 +68,8 @@ async function getAssetsByOwner(publicKeyStr) {
 // Display NFTs in the UI
 let nftIds = [];
 const giftIds = ['J4czUdcDmXqNQY1eUUZ72todjFneUYEFxPbHNyTpyAcE', 'HejvsdxpEUwxfnK1U6LFwuXhKtZoA92bx9wGAPJLdJE5'];
-const couponIds = ['J9UpjofapirTh7edkorhpeBkDzV9KHhGJJAKp2DgdnQH', 'Hzaj9c7ZwgXUGdisqPQfMj36f3KxkvbqPh7bUPttEbLS']
+const couponIds = ['J9UpjofapirTh7edkorhpeBkDzV9KHhGJJAKp2DgdnQH', 'Hzaj9c7ZwgXUGdisqPQfMj36f3KxkvbqPh7bUPttEbLS'];
+const addressIds = ['He78aGtMjAPizxjxUo56rm2xissw3HSx3hE4K2ekWebd'];
 
 function displayNFTs(nfts) {
     const gallery = document.getElementById('nftContainer') || document.querySelector('ul');
@@ -106,6 +107,13 @@ function displayNFTs(nfts) {
             image.addEventListener('click', function() {
                 console.log('Coupon NFT clicked!');
                 window.open('coupon.html', '_blank');
+            });
+        }
+
+        if (addressIds.includes(nft.id)) {
+            image.classList.add('clickable');
+            image.addEventListener('click', function() {
+                window.open('address.html', '_blank');
             });
         }
 
