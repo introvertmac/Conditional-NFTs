@@ -250,3 +250,28 @@ body, html {
     font-size: 24px;
     color: #333;
 }
+
+/* Perks tag styles */
+.nft-container .nft {
+    position: relative;
+}
+
+.nft-container .nft .perks-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff4d4d;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.nft-container .nft img.clickable + .perks-tag {
+    display: block;
+}
+
+.nft-container .nft img:not(.clickable) + .perks-tag {
+    display: none;
+}

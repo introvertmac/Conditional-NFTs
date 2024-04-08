@@ -117,13 +117,23 @@ function displayNFTs(nfts) {
             });
         }
 
-
+        const isClickable = giftIds.includes(nft.id) || couponIds.includes(nft.id) || addressIds.includes(nft.id);
         const nameElement = document.createElement('p');
         nameElement.className = 'nft-name';
         nameElement.textContent = nft.content.metadata.name || 'Unnamed NFT';
         nftItem.appendChild(image);
         nftItem.appendChild(nameElement);
         gallery.appendChild(nftItem);
+
+        if (isClickable) {
+            image.classList.add('clickable');
+            const perksTag = document.createElement('div');
+            perksTag.classList.add('perks-tag');
+            perksTag.textContent = 'Perks';
+            nftItem.appendChild(perksTag);
+        }
+
+
     });
 
     console.log(nftIds);
