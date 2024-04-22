@@ -1,4 +1,4 @@
-# Hauswall
+# Hauswall [Second prize at DRIP HAUS Renaissance Sidetrack]
 
 Hauswall is a web application that allows users to view their Solana wallet balance and NFT collection. The core feature of Hauswall is the ability to display "conditional NFTs," which are NFTs that have a special property that allows them to be redeemed for a gift.
 
