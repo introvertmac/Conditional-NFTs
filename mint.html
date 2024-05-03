@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mint NFT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f2f2f2;
+        }
+        .container {
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #metadataFields {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .metadataField {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-direction: row; /* changed from flex-direction: column */
+        }
+        .metadataField input {
+            margin-right: 5px;
+            width: auto;
+        }
+        #imagePreview {
+            max-width: 200px;
+            margin-top: 10px;
+            display: none;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mint NFT</h1>
+        <label for="apiKey">X-API-Key:</label>
+        <input type="text" id="apiKey" placeholder="Enter X-API-Key">
+        <label for="walletAddress">Wallet Address:</label>
+        <input type="text" id="walletAddress" placeholder="Enter Wallet Address">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter NFT Name">
+        <label for="image">Image URL:</label>
+        <input type="text" id="image" placeholder="Enter Image URL" oninput="previewImage()">
+        <img id="imagePreview" src="" alt="Image Preview">
+        <label for="description">Description:</label>
+        <textarea id="description" rows="3" placeholder="Enter Description"></textarea>
+        <div id="metadataFields">
+            <label>Additional Metadata:</label>
+            <div class="metadataField">
+                <input type="text" placeholder="Enter Key" class="metadataKey">
+                <input type="text" placeholder="Enter Value" class="metadataValue">
+                <button onclick="addMetadataField()">+</button>
+            </div>
+        </div>
+        <button onclick="mintNFT()">Mint NFT</button>
+    </div>
+    <script>
+        function addMetadataField() {
+            const metadataFields = document.getElementById('metadataFields');
+            const div = document.createElement('div');
+            div.classList.add('metadataField');
+            div.innerHTML = `
+                <input type="text" placeholder="Enter Key" class="metadataKey">
+                <input type="text" placeholder="Enter Value" class="metadataValue">
+                <button onclick="removeMetadataField(this)">-</button>
+            `;
+            metadataFields.appendChild(div);
+        }
+
+        function removeMetadataField(button) {
+            const div = button.parentNode;
+            div.parentNode.removeChild(div);
+        }
+
+        function previewImage() {
+            const imageInput = document.getElementById('image');
+            const imagePreview = document.getElementById('imagePreview');
+            if (imageInput.value) {
+                imagePreview.src = imageInput.value;
+                imagePreview.style.display = 'block';
+            } else {
+                imagePreview.src = '';
+                imagePreview.style.display = 'none';
+            }
+        }
+
+        function mintNFT() {
+            const apiKey = document.getElementById('apiKey').value;
+            const walletAddress = document.getElementById('walletAddress').value;
+            const name = document.getElementById('name').value;
+            const image = document.getElementById('image').value;
+            const description = document.getElementById('description').value;
+            const metadataKeys = document.getElementsByClassName('metadataKey');
+            const metadataValues = document.getElementsByClassName('metadataValue');
+
+            const metadata = {
+                name,
+                image,
+                description
+            };
+
+            for (let i = 0; i < metadataKeys.length; i++) {
+                if (metadataKeys[i].value && metadataValues[i].value) {
+                    metadata[metadataKeys[i].value] = metadataValues[i].value;
+                }
+            }
+
+            const data = {
+                recipient: `${walletAddress}:solana`,
+                metadata,
+                compressed: true,
+                reuploadLinkedFiles: false
+            };
+
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-API-KEY': apiKey
+                },
+                body: JSON.stringify(data)
+            };
+
+            fetch('https://staging.crossmint.com/api/2022-06-09/collections/default-solana/nfts', requestOptions)
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => console.error(error));
+        }
+    </script>
+</body>
+</html>
